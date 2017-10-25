@@ -1,10 +1,10 @@
-UNIQUE_CARRIER	UNIQUE_CARRIER_ENTITY	UNIQUE_CARRIER_NAME
-B6	6673	JetBlue Airways
-VX	1006	Virgin America
-VX	1006	Virgin America
-04Q	1126	Tradewind Aviation
-AJQ	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
-AJQ	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
+UNIQUE_CARRIER,	UNIQUE_CARRIER_ENTITY,	UNIQUE_CARRIER_NAME
+B6,	6673	JetBlue Airways
+VX,	1006	Virgin America
+VX,	1006	Virgin America
+04Q,	1126	Tradewind Aviation
+AJQ,	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
+AJQ,	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
 AJQ	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
 AJQ	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
 AJQ	6081	Aerodynamics Inc. d/b/a SkyValue d/b/a SkyValue Airways
