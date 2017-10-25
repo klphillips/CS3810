@@ -1,0 +1,116 @@
+/* Author: Kyra Phillips
+   Due Date: 10/8/2017 - resubmitting 10/24/2017
+   Help from/Worked with: Myself, Cooper Stevens, Max Morrison, Jack Kolb
+   Assignment: Homework Assignment #3
+*/
+
+-- Create SQL Statements, part one to HW3
+
+CREATE TABLE Carrier (
+       UNIQUE_CARRIER VARCHAR(10) 
+       UNIQUE_CARRIER_ENTITY VARCHAR(20) references CarrierEntity(UNIQUE_CARRIER_ENTITY),
+       UNIQUE_CARRIER_NAME VARCHAR(50) 
+);
+
+CREATE TABLE CarrierEntity (
+       UNIQUE_CARRIER_ENTITY VARCHAR(10) PRIMARY KEY references CarrierEntityDates(UNIQUE_CARRIER_ENTITY),
+       CARRIER_NAME VARCHAR(10),
+       CARRIER VARCHAR(5),
+       CARRIER_GROUP VARCHAR(5),
+       CARRIER_GROUP_NEW VARCHAR(5),
+       REGION VARCHAR(15),
+       AIRLINE_ID VARCHAR(10)
+);
+
+CREATE TABLE CarrierEntityDates (
+       START_DATE_SOURCE VARCHAR(10),
+       THRU_DATE_SOURCE VARCHAR(10),
+       UNIQUE_CARRIER_ENTITY VARCHAR(5) PRIMARY KEY
+);
+
+CREATE TABLE Origins (
+       ORIGIN_STATE_NM VARCHAR(20) references OriginNames(ORIGIN_STATE_NM),
+       ORIGIN_AIRPORT_ID VARCHAR(5) references OriginAirports(ORIGIN_AIRPORT_ID),
+       ORIGIN VARCHAR(5) references OriginCityName(ORIGIN)
+);
+
+CREATE TABLE OriginNames (
+       ORIGIN_STATE_NM	 VARCHAR(20) PRIMARY KEY,
+       ORIGIN_WAC VARCHAR(5),
+       ORIGIN_STATE_FIPS VARCHAR(5),
+       ORIGIN_STATE_ABR VARCHAR(5)
+);
+
+CREATE TABLE OriginAirports(
+       ORIGIN_AIRPORT_SEQ_ID VARCHAR(15),
+       ORIGIN_AIRPORT_ID VARCHAR(5) PRIMARY KEY,
+       ORIGIN_CITY_MARKET_ID VARCHAR(10)
+);
+
+CREATE TABLE OriginCityName (
+       ORIGIN_CITY_NAME VARCHAR(30),
+       ORIGIN VARCHAR(5) PRIMARY KEY
+);
+
+CREATE TABLE Destinations (
+       DEST_STATE_NM VARCHAR(20) references DestinationNames(DEST_STATE_NM),
+       DEST_AIRPORT_ID VARCHAR(5) references DestinationAirport(DEST_AIRPORT_ID),
+       DEST VARCHAR(5) references DestinationCityNames(DEST)
+);
+
+CREATE TABLE DestinationAirport (
+       DEST_AIRPORT_ID VARCHAR(5) PRIMARY KEY,
+       DEST_AIRPORT_SEQ_ID VARCHAR(10),
+       DEST_CITY_MARKET_ID VARCHAR(5)
+);
+
+CREATE TABLE DestinationNames (
+       DEST_STATE_ABR VARCHAR(5),
+       DEST_STATE_FIPS VARCHAR(20),
+       DEST_STATE_NM VARCHAR(20) PRIMARY KEY,
+       DEST_WAC VARCHAR(3)
+);
+
+CREATE TABLE DestinationCityNames(
+       DEST_CITY_NAME VARCHAR(20),
+       DEST VARCHAR(20) PRIMARY KEY
+);
+
+CREATE TABLE Aircrafts (
+       AIRCRAFT_GROUP VARCHAR(20),
+       AIRCRAFT_TYPE VARCHAR(20),
+       AIRCRAFT_CONFIG VARCHAR(20),
+       CLASS VARCHAR(5),
+       DISTANCE INT references AircraftDistance(DISTANCE),
+       DEPARTURES_SCHEDULED VARCHAR(5),
+       DEPARTURES_PERFORMED VARCHAR(5)
+);
+
+CREATE TABLE AircraftDistance (
+       DISTANCE_GROUP VARCHAR(5),
+       DISTANCE INT PRIMARY KEY
+);
+
+CREATE TABLE AircraftSeatsPassengers (
+       SEATS INT PRIMARY KEY,
+       AIRCRAFT_CONFIG(5),
+       PASSENGERS INT
+);
+
+CREATE TABLE Airtime (
+       RAMP_TO_RAMP VARCHAR(5),
+       AIR_TIME VARCHAR(5),
+       DISTANCE VARCHAR(5) references Aircraft_Distance(DISTANCE)
+);
+
+CREATE TABLE TimePeriod(
+       YEAR VARCHAR(10),
+       MONTH VARCHAR(10),
+       QUARTER(10)
+);
+
+CREATE TABLE Payload(
+       PAYLOAD INT,
+       FREIGHT INT,
+       MAIL INT
+);
