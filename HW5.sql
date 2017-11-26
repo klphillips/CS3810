@@ -29,11 +29,11 @@ CREATE TABLE PayerPhoneNumbers(
 -- This table is for all of the information needed for a Payers address
 
 CREATE TABLE PayerAddress(
-	Country VARCHAR(25),
-	City VARCHAR(25),
-	State VARCHAR(25),
-	postalCode INT,
-	streetAddress VARCHAR(200),
+	payerCountry VARCHAR(25),
+	payerCity VARCHAR(25),
+	payerState VARCHAR(25),
+	payerPostalCode INT,
+	payerStreetAddress VARCHAR(200),
 	Email VARCHAR(200),
 	FOREIGN KEY(Email) REFERENCES Payer(Email)
 );
@@ -70,11 +70,11 @@ CREATE TABLE PassengerPhoneNumbers(
 -- This table is for all of the information needed for a Passengers address
 
 CREATE TABLE PassengerAddress(
-	Country VARCHAR(25),
-	City VARCHAR(25),
-	State VARCHAR(25),
-	postalCode INT,
-	streetAddress VARCHAR(200),
+	passCountry VARCHAR(25),
+	passCity VARCHAR(25),
+	passState VARCHAR(25),
+	passPostalCode INT,
+	passStreetAddress VARCHAR(200),
 	Email VARCHAR(200),
 	FOREIGN KEY(Email) REFERENCES Payer(Email)
 );
@@ -84,7 +84,7 @@ CREATE TABLE PassengerAddress(
 CREATE TABLE Airlines(
 	airlineName VARCHAR(200),
 	airlineCode VARCHAR(10),
-	Country VARCHAR(25),
+	airlineCountry VARCHAR(25),
 	PRIMARY KEY(airlineCode)
 );
 
@@ -103,7 +103,17 @@ CREATE TABLE Flights(
 	arrivalHour INT,
 	arrivalMin INT,
 	PRIMARY KEY (uniqueFlightNumber),
-	FOREIGN KEY (airlineCode) REFERENCES Airlines(airlineCode)
+	FOREIGN KEY (airlineCode) REFERENCES Airlines(airlineCode),
+	FOREIGN KEY (originCode) REFERENCES Airports(airportCode),
+	FOREIGN KEY (destinationCode) REFERENCES Airports(airportCode)
+);
+
+CREATE TABLE Airports(
+	airportCode INT,
+	airportName VARCHAR(50),
+	cityName VARCHAR(50),
+	stateName VARCHAR(50),
+	PRIMARY KEY (airportCode)
 );
 
 --This table is the necessary information for each booking
