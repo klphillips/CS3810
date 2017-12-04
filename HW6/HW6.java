@@ -149,7 +149,7 @@ public class HW6 {
             openConnection();
             conn.setAutoCommit(false);
             statement = conn.createStatement();
-            String insertPayer = "INSERT INTO Payers (Email, firstName, LastName) +"
+            String insertPayer = "INSERT INTO Payers (Email, firstName, lastName) +"
                     + "VALUES ('"+Email+"', '"+firstName+"', '"+lastName+",)";
             statement.executeUpdate(insertPayer);
             String insertPayerPhone = "INSERT INTO PayerPhoneNumbers "
