@@ -1,0 +1,6 @@
+"last","first","postalcode"
+"Phillips","Kyra","80241"
+"Stevens","Cooper","80241"
+"Graae","Myla","68901"
+"Phillips","Helga","80001"
+"Rogers","Celia","83686"
